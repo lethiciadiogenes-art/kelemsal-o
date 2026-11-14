@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Essence Beleza & Saúde Capilar</title>
+<meta name="description" content="Essence | Beleza & Saúde Capilar em Governador Valadares. Corte, mechas, saúde capilar, make, manicure e Princess Day. Agende pelo WhatsApp.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: página única, muito branco, faixas verdes pontuais; fotos em molduras de arco; um único CTA (WhatsApp) repetido em cada dobra. Tema único (branco + verde da marca), por escolha. */
+:root{
+  --white:#ffffff;
+  --mist:#f5f6f1;        /* branco esverdeado para faixas */
+  --soft:#e6e9dc;        /* verde claro de superfícies */
+  --line:#d5d9c8;        /* fios e bordas */
+  --green:#6b7355;       /* verde da marca (destaques do Instagram) */
+  --deep:#434a33;        /* verde profundo: botões e faixas escuras */
+  --ink:#252920;         /* texto */
+  --muted:#5f6552;       /* texto secundário */
+  --on-deep:#f3f5ec;     /* texto sobre verde profundo */
+  --on-deep-muted:#cdd2bd;
+  --display:"Bodoni Moda","Didot","Bodoni MT","Times New Roman",serif;
+  --body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --wrap:1160px;
+  --gut-l:max(20px, env(safe-area-inset-left, 0px));
+  --gut-r:max(20px, env(safe-area-inset-right, 0px));
+  --radius:18px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--white);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:var(--display);font-weight:400;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2.5rem,6.2vw,4.6rem)}
+h2{font-size:clamp(2rem,4.2vw,3.1rem)}
+h1 em,h2 em{font-style:italic;color:var(--green)}
+h3{font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.2}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-weight:500}
+.lead{font-size:1.14rem;color:var(--muted);max-width:34em}
+:focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:4px}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:0 1.7em;border-radius:999px;font:500 1rem var(--body);letter-spacing:.02em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--deep);color:var(--on-deep)}
+.btn-primary:hover{background:var(--ink);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--white)}
+.btn-ghost:hover{border-color:var(--deep)}
+.btn-light{background:var(--white);color:var(--deep)}
+.btn-light:hover{background:var(--soft);transform:translateY(-1px)}
+
+/* Cabeçalho */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{display:flex;align-items:baseline;gap:.55em;text-decoration:none}
+.brand b{font-family:var(--display);font-weight:500;font-size:1.7rem;letter-spacing:.04em;line-height:1}
+.brand span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a.link{text-decoration:none;font-size:.95rem;color:var(--muted);padding:12px 0;transition:color .2s}
+.nav a.link:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 1.3em;font-size:.93rem}
+.menu-btn{display:none;width:46px;height:46px;border:1px solid var(--line);background:var(--white);border-radius:50%;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)}
+.menu-btn svg{width:20px;height:20px}
+
+/* Molduras de foto (espaços reservados) */
+.ph{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--soft),var(--mist) 70%);border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;max-width:100%}
+.ph svg.leaf{position:absolute;inset:0;margin:auto;width:46%;height:auto;max-height:70%;color:var(--green);opacity:.5}
+.ph .tag{position:relative;margin:14px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.88);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arch{border-radius:999px 999px var(--radius) var(--radius)}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,88px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,84px);align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.hero-note{font-size:.93rem;color:var(--muted);display:flex;align-items:center;gap:.6em}
+.hero-note svg{width:18px;height:18px;color:var(--green);flex:none}
+.hero-art{position:relative;min-width:0}
+.hero-art .ph{aspect-ratio:4/5;width:100%;align-items:flex-start}
+.hero-art .ph .tag{margin-top:22%}
+.hero-art .seal{position:absolute;left:-18px;bottom:34px;background:var(--deep);color:var(--on-deep);border-radius:var(--radius);padding:16px 20px;max-width:210px;font-size:.9rem;line-height:1.4;box-shadow:0 18px 40px -22px rgba(37,41,32,.6)}
+.hero-art .seal b{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:1.25rem;margin-bottom:2px}
+
+/* Faixa de pilares */
+.pillars{background:var(--mist);border-block:1px solid var(--line)}
+.pillars .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-block:34px}
+.pillar{display:flex;gap:16px;align-items:flex-start;min-width:0}
+.pillar svg{width:30px;height:30px;color:var(--green);flex:none;margin-top:3px}
+.pillar b{display:block;font-weight:500;font-size:1.02rem}
+.pillar span{color:var(--muted);font-size:.95rem;line-height:1.5;display:block}
+
+/* Seções */
+.section{padding-block:clamp(64px,9vw,112px)}
+.head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(32px,5vw,56px);max-width:44em}
+
+/* Serviços */
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.service{display:flex;flex-direction:column;gap:12px;padding:34px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);transition:background .25s;min-width:0}
+.service:hover{background:var(--mist)}
+.service svg.ico{width:34px;height:34px;color:var(--green)}
+.service p{color:var(--muted);font-size:.98rem;flex:1}
+.service a{align-self:flex-start;display:inline-flex;align-items:center;gap:.5em;min-height:44px;font-weight:500;font-size:.93rem;color:var(--deep);text-decoration:none;border-bottom:1px solid transparent;transition:gap .2s}
+.service a:hover{gap:.85em}
+.service a svg{width:16px;height:16px}
+
+/* Sobre */
+.about{background:var(--mist)}
+.about .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,84px);align-items:center}
+.about .ph{aspect-ratio:4/5;width:100%}
+.about-copy{display:flex;flex-direction:column;gap:22px;min-width:0}
+.about-copy p{color:var(--muted);max-width:36em}
+.sign{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--ink)}
+.sign small{display:block;font:400 .8rem var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-top:4px}
+
+/* Como agendar */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;padding-top:22px;border-top:1px solid var(--deep);min-width:0}
+.steps li::before{content:counter(s);font-family:var(--display);font-style:italic;font-size:2.6rem;line-height:1;color:var(--green)}
+.steps p{color:var(--muted);font-size:.98rem}
+
+/* Galeria */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery .ph{aspect-ratio:1/1;border-radius:var(--radius)}
+.gallery .ph.tall{grid-row:span 2;aspect-ratio:auto}
+.center-row{display:flex;justify-content:center;margin-top:36px}
+
+/* Princess Day */
+.princess{background:var(--deep);color:var(--on-deep)}
+.princess .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,84px);align-items:center}
+.princess .eyebrow{color:var(--on-deep-muted)}
+.princess h2 em{color:var(--on-deep-muted)}
+.princess p{color:var(--on-deep-muted);max-width:36em}
+.princess-copy{display:flex;flex-direction:column;gap:22px;align-items:flex-start;min-width:0}
+.princess .ph{aspect-ratio:1/1;width:100%;background:linear-gradient(160deg,#59614a,#4b5239);border-color:#6b7355}
+.princess .ph svg.leaf{color:var(--on-deep-muted)}
+
+/* Depoimentos */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.quote{display:flex;flex-direction:column;gap:16px;padding:30px;border:1px dashed var(--line);border-radius:var(--radius);min-width:0}
+.quote .mark{font-family:var(--display);font-style:italic;font-size:3rem;line-height:.6;color:var(--green)}
+.quote p{color:var(--muted);font-size:1rem}
+.quote small{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+
+/* Contato */
+.contact{background:var(--mist);border-top:1px solid var(--line)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,84px);align-items:start}
+.contact-copy{display:flex;flex-direction:column;gap:22px;min-width:0}
+.info{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--radius);background:var(--white);min-width:0}
+.info-row{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-bottom:1px solid var(--line)}
+.info-row:last-child{border-bottom:0}
+.info-row>svg{width:24px;height:24px;color:var(--green);flex:none;margin-top:4px}
+.info-row div{min-width:0;flex:1}
+.info-row small{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:2px}
+.info-row b{font-weight:500;font-size:1.05rem;user-select:all;overflow-wrap:anywhere}
+.info-row a.mini,.info-row button.mini{display:inline-flex;align-items:center;min-height:44px;margin-right:14px;font:500 .9rem var(--body);color:var(--deep);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+
+/* Rodapé */
+.footer{background:var(--ink);color:var(--on-deep-muted);font-size:.9rem}
+.footer .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;padding-block:30px calc(30px + 76px)}
+.footer b{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--on-deep);letter-spacing:.04em}
+.footer a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.footer a:hover{color:var(--on-deep)}
+.footer nav{display:flex;flex-wrap:wrap;gap:6px 24px}
+
+/* Botão flutuante */
+.fab{position:fixed;z-index:55;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;background:var(--deep);color:var(--on-deep);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -12px rgba(37,41,32,.7);border:2px solid var(--white);transition:transform .2s,background .2s}
+.fab:hover{transform:scale(1.06);background:var(--ink)}
+.fab svg{width:28px;height:28px}
+
+/* Entrada suave do hero (parte de um estado visível) */
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy>*{animation:rise .7s both cubic-bezier(.2,.7,.2,1)}
+  .hero-copy>*:nth-child(2){animation-delay:.06s}
+  .hero-copy>*:nth-child(3){animation-delay:.12s}
+  .hero-copy>*:nth-child(4){animation-delay:.18s}
+  .hero-copy>*:nth-child(5){animation-delay:.24s}
+  @keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Responsivo */
+@media (max-width:980px){
+  .services{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .gallery .ph.tall{grid-row:auto;aspect-ratio:1/1}
+  .quotes{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .menu-btn{display:inline-flex}
+  .nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-bottom:1px solid var(--line);padding:8px var(--gut-r) 20px var(--gut-l);display:none}
+  .nav.open{display:flex}
+  .nav a.link{padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--ink)}
+  .nav .btn{margin-top:16px;min-height:52px}
+  .hero .wrap,.about .wrap,.princess .wrap,.contact .wrap{grid-template-columns:1fr}
+  .hero-art{max-width:460px;width:100%;margin-inline:auto}
+  .hero-art .seal{left:12px;bottom:18px}
+  .about .ph,.princess .ph{max-width:460px;margin-inline:auto}
+  .pillars .wrap,.steps{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .services{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr);gap:10px}
+  .brand span{display:none}
+  .cta-row .btn{width:100%}
+  .service{padding:28px 22px}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-leaf" viewBox="0 0 120 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 154V40"/>
+      <path d="M60 60C40 54 30 38 32 18c20 2 30 18 28 42Z"/>
+      <path d="M60 86c22-4 34-20 34-42-22 2-36 18-34 42Z"/>
+      <path d="M60 112C38 108 26 92 26 70c22 2 36 18 34 42Z"/>
+      <path d="M60 134c20-2 32-16 34-36-20 2-34 14-34 36Z"/>
+    </symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.6-1.200.1-.200 0-.300 0-.500l-.8-1.800c-.2-.500-.4-.400-.6-.400h-.5c-.2 0-.5.100-.7.300-.900.900-1 2.200-.300 3.600a11 11 0 0 0 4.200 4.200c1.900 1 2.900 1 3.700.700.600-.200 1.500-.900 1.600-1.500.100-.500.100-.800 0-.900Z"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21Z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.200" cy="6.800" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="24" r="4"/><circle cx="24" cy="24" r="4"/><path d="M10.500 21 24 4M21.500 21 8 4"/></symbol>
+    <symbol id="i-foil" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4c0 9 2 16 1 24M16 4c0 9-1 16 0 24M24 4c0 9-2 16-1 24"/><path d="M5 12h7M20 18h7"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4s9 9.500 9 16a9 9 0 0 1-18 0c0-6.500 9-16 9-16Z"/><path d="M12 21a4 4 0 0 0 4 4"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M27 5 14 18"/><path d="M14 18c-3-1-6 1-6 4s-2 5-4 5c5 2 12 0 12-6 0-1-1-2-2-3Z"/></symbol>
+    <symbol id="i-nail" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="14" width="12" height="14" rx="3"/><path d="M13 14V9h6v5M14.500 9V4h3v5"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 23 3 10l7 6 6-9 6 9 7-6-2 13Z"/><path d="M6 27h20"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27S4 20 4 11.500A6.500 6.500 0 0 1 16 8a6.500 6.500 0 0 1 12 3.500C28 20 16 27 16 27Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></symbol>
+  </defs>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Essence, início">
+      <b>Essence</b><span>Beleza &amp; Saúde Capilar</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <svg aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="link" href="#servicos">Serviços</a>
+      <a class="link" href="#sobre">Sobre</a>
+      <a class="link" href="#galeria">Galeria</a>
+      <a class="link" href="#princess-day">Princess Day</a>
+      <a class="link" href="#contato">Contato</a>
+      <a class="btn btn-primary" data-wa target="_blank" rel="noopener" href="https://wa.me/5533991514709?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio.">Agendar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Governador Valadares · MG</p>
+        <h1>Seu momento de cuidado <em>começa aqui.</em></h1>
+        <p class="lead">Experiências de beleza, saúde capilar e bem-estar em um espaço acolhedor, com atendimento pensado para você.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-wa target="_blank" rel="noopener" href="https://wa.me/5533991514709?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio.">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar pelo WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+        <p class="hero-note"><svg aria-hidden="true"><use href="#i-pin"/></svg>R. Ametista, 232 · São Raimundo</p>
+      </div>
+      <div class="hero-art">
+        <div class="ph arch" data-foto="hero">
+          <svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg>
+          <span class="tag">Foto principal do salão</span>
+        </div>
+        <div class="seal"><b>Beleza &amp; bem-estar</b>Cuidado que vai além da estética.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars" aria-label="Diferenciais">
+    <div class="wrap">
+      <div class="pillar">
+        <svg aria-hidden="true" viewBox="0 0 32 32"><use href="#i-drop"/></svg>
+        <div><b>Saúde capilar em primeiro lugar</b><span>Fios e couro cabeludo cuidados de dentro para fora.</span></div>
+      </div>
+      <div class="pillar">
+        <svg aria-hidden="true" viewBox="0 0 32 32"><use href="#i-heart"/></svg>
+        <div><b>Atendimento personalizado</b><span>Cada cliente é ouvida antes de qualquer procedimento.</span></div>
+      </div>
+      <div class="pillar">
+        <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26C6 13 13 6 27 5c0 14-7 21-21 21Z"/><path d="M5 28 19 13"/></svg>
+        <div><b>Espaço acolhedor</b><span>Um ambiente tranquilo para você relaxar de verdade.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Serviços</p>
+        <h2>Tudo o que você precisa para <em>se sentir bem.</em></h2>
+        <p class="lead">Escolha o serviço e fale com a gente pelo WhatsApp. Respondemos com valores e horários disponíveis.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-scissors"/></svg>
+          <h3>Corte</h3>
+          <p>Cortes pensados para o seu tipo de fio, formato de rosto e rotina.</p>
+          <a data-wa="Corte" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Agendar corte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-foil"/></svg>
+          <h3>Mechas</h3>
+          <p>Iluminação com acabamento natural, respeitando a saúde do cabelo.</p>
+          <a data-wa="Mechas" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Agendar mechas <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-drop"/></svg>
+          <h3>Saúde capilar</h3>
+          <p>Cuidados para os fios e o couro cabeludo, definidos depois de uma avaliação.</p>
+          <a data-wa="Saúde capilar" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Agendar avaliação <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-brush"/></svg>
+          <h3>Make &amp; produção</h3>
+          <p>Maquiagem e penteado para festas, formaturas, ensaios e datas especiais.</p>
+          <a data-wa="Make e produção" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Agendar produção <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-nail"/></svg>
+          <h3>Manicure</h3>
+          <p>Mãos e pés bem cuidados, com capricho e higiene em cada detalhe.</p>
+          <a data-wa="Manicure" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Agendar manicure <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="service">
+          <svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>
+          <h3>Princess Day</h3>
+          <p>Um dia inteiro dedicado a você, com os cuidados do salão em uma só experiência.</p>
+          <a data-wa="Princess Day" target="_blank" rel="noopener" href="https://wa.me/5533991514709">Quero meu Princess Day <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" id="sobre">
+    <div class="wrap">
+      <div class="ph arch" data-foto="sobre">
+        <svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg>
+        <span class="tag">Foto da Kelem / equipe</span>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">Sobre o Essence</p>
+        <h2>Cabelo é mais do que beleza. <em>É reflexo de como você está.</em></h2>
+        <p>No Essence, acreditamos que cuidar do cabelo e do couro cabeludo é um gesto de autocuidado. Por isso, cada atendimento começa com escuta: entendemos a sua história, a sua rotina e o que você deseja antes de decidir o melhor caminho.</p>
+        <p>Nosso espaço foi pensado para ser um lugar de pausa. Aqui você encontra profissionais dedicadas, técnica e carinho em cada detalhe.</p>
+        <p class="sign">Kelem Gatto<small>Fundadora do Essence</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-agendar">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Como agendar</p>
+        <h2>Simples, pelo <em>WhatsApp.</em></h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Chame a gente</h3><p>Toque em “Agendar” e conte qual serviço você procura.</p></li>
+        <li><h3>Escolha o horário</h3><p>Confirmamos os valores e encontramos juntas o melhor dia para você.</p></li>
+        <li><h3>Viva o seu momento</h3><p>Chegue, relaxe e deixe o cuidado com a nossa equipe.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="galeria" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Galeria</p>
+        <h2>Resultados que <em>falam por si.</em></h2>
+      </div>
+      <div class="gallery">
+        <div class="ph tall" data-foto="galeria-1"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Mechas</span></div>
+        <div class="ph" data-foto="galeria-2"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Corte</span></div>
+        <div class="ph" data-foto="galeria-3"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Make</span></div>
+        <div class="ph tall" data-foto="galeria-4"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Espaço</span></div>
+        <div class="ph" data-foto="galeria-5"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Manicure</span></div>
+        <div class="ph" data-foto="galeria-6"><svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg><span class="tag">Produção</span></div>
+      </div>
+      <div class="center-row">
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.instagram.com/salaoessencegv/">
+          <svg aria-hidden="true"><use href="#i-insta"/></svg>Ver mais no Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section princess" id="princess-day">
+    <div class="wrap">
+      <div class="princess-copy">
+        <p class="eyebrow">Princess Day</p>
+        <h2>Um dia para lembrar que você <em>merece cuidado.</em></h2>
+        <p>O Princess Day é a nossa experiência mais completa: horas dedicadas só a você, em um ambiente preparado com carinho.</p>
+        <p>É também o nome de uma ação que nos enche de orgulho. Em parceria com o Projeto Esperançar, recebemos mulheres para um Dia de Princesa de acolhimento e autoestima.</p>
+        <a class="btn btn-light" data-wa="Princess Day" target="_blank" rel="noopener" href="https://wa.me/5533991514709">
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>Saber mais
+        </a>
+      </div>
+      <div class="ph arch" data-foto="princess">
+        <svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg>
+        <span class="tag">Foto do Princess Day</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="depoimentos">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Depoimentos</p>
+        <h2>O carinho de quem <em>já viveu a experiência.</em></h2>
+        <p class="lead">Os feedbacks das nossas clientes estão nos destaques do Instagram.</p>
+      </div>
+      <div class="quotes">
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span><p>Espaço reservado para um depoimento real de cliente.</p><small>Nome da cliente</small></figure>
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span><p>Espaço reservado para um depoimento real de cliente.</p><small>Nome da cliente</small></figure>
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span><p>Espaço reservado para um depoimento real de cliente.</p><small>Nome da cliente</small></figure>
+      </div>
+      <div class="center-row">
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.instagram.com/salaoessencegv/">
+          <svg aria-hidden="true"><use href="#i-insta"/></svg>Ver feedbacks no Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contato">
+    <div class="wrap">
+      <div class="contact-copy">
+        <p class="eyebrow">Contato</p>
+        <h2>Agende o seu <em>momento de cuidado.</em></h2>
+        <p class="lead">Fale com a gente pelo WhatsApp e reserve o seu horário. Será um prazer receber você.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-wa target="_blank" rel="noopener" href="https://wa.me/5533991514709?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio.">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="info">
+        <div class="info-row">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          <div>
+            <small>WhatsApp</small>
+            <b id="fone">(33) 99151-4709</b><br>
+            <button class="mini" id="copiar" type="button">Copiar número</button>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg aria-hidden="true"><use href="#i-pin"/></svg>
+          <div>
+            <small>Endereço</small>
+            <b>R. Ametista, 232 · São Raimundo<br>Governador Valadares · MG</b><br>
+            <a class="mini" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=R.%20Ametista%2C%20232%20-%20S%C3%A3o%20Raimundo%2C%20Governador%20Valadares%20-%20MG">Abrir no mapa</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg aria-hidden="true"><use href="#i-clock"/></svg>
+          <div>
+            <small>Atendimento</small>
+            <b>Com hora marcada</b>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg aria-hidden="true"><use href="#i-insta"/></svg>
+          <div>
+            <small>Instagram</small>
+            <b>@salaoessencegv</b><br>
+            <a class="mini" target="_blank" rel="noopener" href="https://www.instagram.com/salaoessencegv/">Abrir perfil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <b>Essence</b>
+    <nav aria-label="Rodapé">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <span>© <span id="ano">2026</span> Essence · Beleza &amp; Saúde Capilar</span>
+  </div>
+</footer>
+
+<a class="fab" data-wa target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp" href="https://wa.me/5533991514709?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio.">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<script>
+(function(){
+  var FONE='5533991514709';
+  // Mensagem pronta do WhatsApp, de acordo com o serviço escolhido
+  document.querySelectorAll('a[data-wa]').forEach(function(a){
+    var s=a.getAttribute('data-wa');
+    var msg=s?'Olá! Vim pelo site e gostaria de agendar: '+s+'.':'Olá! Vim pelo site e gostaria de agendar um horário.';
+    a.href='https://wa.me/'+FONE+'?text='+encodeURIComponent(msg);
+  });
+  // Menu no celular
+  var btn=document.getElementById('menu-btn'),nav=document.getElementById('nav');
+  function fechar(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menu');}
+  btn.addEventListener('click',function(){
+    var aberto=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',aberto?'true':'false');
+    btn.setAttribute('aria-label',aberto?'Fechar menu':'Abrir menu');
+  });
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))fechar();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')fechar();});
+  // Copiar número
+  var copiar=document.getElementById('copiar'),fone=document.getElementById('fone');
+  copiar.addEventListener('click',function(){
+    function ok(){copiar.textContent='Número copiado';setTimeout(function(){copiar.textContent='Copiar número';},2200);}
+    function selecionar(){var r=document.createRange();r.selectNodeContents(fone);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+    try{navigator.clipboard.writeText('+55 33 99151-4709').then(ok,selecionar);}catch(err){selecionar();}
+  });
+  document.getElementById('ano').textContent=new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
